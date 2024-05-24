@@ -1,4 +1,0 @@
-[build]
-  functions = "functions"
-  command = "go build -o ./functions/api ./main.go"
-  publish = "build"
