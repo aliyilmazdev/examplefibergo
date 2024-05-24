@@ -1,15 +1,17 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
+func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
+  return &events.APIGatewayProxyResponse{
+    StatusCode:        200,
+    Body:              "Hello, World!",
+  }, nil
+}
+
 func main() {
-    app := fiber.New()
-
-    app.Get("/api", func(c *fiber.Ctx) error {
-        return c.SendString("Merhaba, Fiber!")
-    })
-
-    app.Listen(":3000")
+  lambda.Start(handler)
 }
